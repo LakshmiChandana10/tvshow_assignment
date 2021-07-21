@@ -1,0 +1,88 @@
+<template>
+  <div class="body">
+    <div v-if="detailsCheck">
+      <div class="container">
+        <h2 class="heading">Movie Details</h2>
+        <div class="img">
+          <img
+            class="image"
+            :src="details.image ? details.image.original : ''"
+            height="300"
+            width="300"
+            v-if="details.image"
+          />
+          <div v-else>
+            <img :src="images.sample" width="300" height="300" />
+          </div>
+        </div>
+        <div class="showDetails">
+          <div class="details" v-if="details.name">
+            <b>Name: {{ details.name }}</b>
+          </div>
+          <span class="details" v-else>Not Available</span>
+          <div class="details">
+            <b>Language: {{ details.language }}</b>
+          </div>
+          <div class="details">
+            <b>Status: {{ details.status }}</b>
+          </div>
+          <div class="details">
+            <b>Genres: {{ details.genres }}</b>
+          </div>
+          <div class="details">
+            <p class="summary" v-html="details.summary"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-else><h1>Details Not Found!</h1></div>
+  </div>
+</template>
+
+<script>
+import { getDetails } from "@/services/api.js";
+
+export default {
+  name: "Details",
+  props: ["id"],
+  data() {
+    return {
+      details: [],
+      detailsCheck: true,
+      images: {
+        sample: require("../assets/defaultImage.png"),
+      },
+    };
+  },
+
+  mounted() {
+    if (this.id !== undefined) {
+      this.getShowDetails();
+    } else {
+      this.detailsCheck = false;
+    }
+  },
+  methods: {
+    getShowDetails() {
+      getDetails(this.id).then((res) => {
+        this.details = res.data;
+      });
+    },
+  },
+};
+</script>
+<style scoped>
+.heading {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  color: black;
+  font-weight: bolder;
+}
+.details {
+  font-family:cursive;
+}
+.summary {
+    font-family:inherit;
+
+    }
+</style>
