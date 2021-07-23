@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark  bg-dark">
       <div class="container-fluid">
         <router-link class="nav-link" :to="{ name: 'Home' }">
         <b-icon icon="display" class ="navbar-icon"></b-icon>
@@ -47,12 +47,12 @@ export default {
 </script>
 <style scoped>
 .nav-link {
-  color: red;
+  color: white;
 }
 .navbar-icon {
-  color: rgb(179, 24, 24);
+  color: white;
 }
 .btn {
-  color: red;
+  color: white;
 }
 </style>

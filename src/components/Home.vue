@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="container">
+    <div >
       <div class="row">
         <div class="heading">Popular Shows</div>
         <div class="row"> 
@@ -10,13 +10,13 @@
             v-for="shows in popularShows"
             :key="shows.id"
           >
-            <div class="movies">
+            <div class="tvShowImg">
               <img
                 class="popularImage"
                 :src="shows.image.original"
                 width="200"
                 height="300"
-                hspace="5"
+                
                 @click="goToDetails(shows.id)"
               />
               <div>
@@ -48,11 +48,11 @@
             :key="showGenres.id"
           >
             <img
+            class="tvShowImg"
               id="images"
               :src="showGenres.image.medium"
-              width="200"
-              height="300"
-              hspace="5"
+              width="250"
+              height="300"  
               @click="goToDetails(show.id)"
             />
             <div>
@@ -152,5 +152,8 @@ img {
 }
 .rating{
     color: black
+    }
+.tvShowImg {
+      padding-left: 50px;
     }
 </style>

@@ -29,7 +29,7 @@ export default {
 <style>
 #app {
   text-align: center;
-  background-color:wheat;
+  background-color: peachpuff;
   padding-bottom: 150px;
 }
 </style>

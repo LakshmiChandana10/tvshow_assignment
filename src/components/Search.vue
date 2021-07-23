@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
       <div v-if="searchShows.length > 0">
         <div class="row">
           <div
@@ -11,7 +11,7 @@
               <img
                 :src="eachShow.show.image ? eachShow.show.image.medium : ''"
                 width="200"
-                height="300"
+                height="300" 
                 v-if="eachShow.show.image"
                 @click="goToDetails(eachShow.show.id)"
               />
@@ -71,13 +71,14 @@ export default {
 };
 </script>
 <style scoped>
-.scoll {
+ .scoll {
   display: flex;
   flex-wrap: wrap;
-}
+} 
 img {
   padding-top: 10px;
   cursor: pointer;
   border-radius: 1%;
 }
+
 </style>
