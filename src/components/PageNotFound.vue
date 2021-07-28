@@ -3,8 +3,8 @@
     <div class="card alert-danger">
       <div class="card-body">
         <h1 class="card-text">{{ errorMessage }}</h1>
-        <b-button pill variant="success" @click="homePage"
-          >Go To Home Page</b-button
+        <button pill variant="success" @click="homePage"
+          >Go To Home Page</button
         >
       </div>
     </div>

@@ -53,7 +53,7 @@
               :src="showGenres.image.medium"
               width="250"
               height="300"  
-              @click="goToDetails(show.id)"
+              @click="goToDetails(showGenres.id)"
             />
             <div>
               <span>
@@ -99,16 +99,22 @@ export default {
             this.popularShows.push(showsList);
           }
         });
-        const allGenres = this.allShows.map((show) => show.genres).flat();
-        this.uniqueGenres = [...new Set(allGenres)];
+       const set = new Set();
+        this.allShows.forEach((i) => {
+          i.genres.forEach((j) => {
+            set.add(j);
+          });
+        });
+        this.uniqueGenres = [...set];
         this.categories = this.uniqueGenres.map((genre) => {
-            const filterShows = this.allShows
+          const filterShows = this.allShows
             .filter((show) => show.genres.includes(genre))
             .sort((a, b) => b.rating.average - a.rating.average);
-            return { name: genre, filterShows };
+          return { name: genre, filterShows };
         });
       });
     },
+
     goToDetails(id) {
       this.$router.push({
         name: "Details",
